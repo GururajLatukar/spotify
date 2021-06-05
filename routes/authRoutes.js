@@ -1,4 +1,5 @@
 const passport = require("passport");
+const auth = require("../middleware/auth");
 
 module.exports = (app) => {
   app.get("/api/login", passport.authenticate("spotify"));
@@ -11,7 +12,7 @@ module.exports = (app) => {
     }
   );
 
-  app.get("/api/token", (req, res) => {
+  app.get("/api/token", auth, (req, res) => {
     res.send(req.user);
   });
 
