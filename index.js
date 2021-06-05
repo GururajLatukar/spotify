@@ -1,10 +1,23 @@
 require("dotenv").config();
 const express = require("express");
+require("./services/passport");
+const cookieSession = require("cookie-session");
+const passport = require("passport");
 const app = express();
 
-app.get("/", function (req, res) {
-  res.send("spotify app");
-});
+app.use(express.json());
+app.use(
+  cookieSession({
+    name: "spotify-app",
+    keys: [process.env.COOKIE_KEY],
+    maxAge: 30 * 24 * 60 * 60 * 1000
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+require("./routes/authRoutes")(app);
 
 const PORT = process.env.PORT || 4000;
 
