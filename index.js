@@ -18,6 +18,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require("./routes/authRoutes")(app);
+require("./routes/spotifyRoutes")(app);
 
 const PORT = process.env.PORT || 4000;
 
