@@ -5,7 +5,7 @@ module.exports = (app) => {
 
   app.get(
     "/callback",
-    passport.authenticate("spotify", { failureRedirect: "/" }),
+    passport.authenticate("spotify", { failureRedirect: process.env.BASE_URL }),
     function (req, res) {
       res.send({ msg: "Login is successful!" });
     }
@@ -17,6 +17,6 @@ module.exports = (app) => {
 
   app.get("/api/logout", (req, res) => {
     req.logout();
-    res.redirect("/");
+    res.redirect(process.env.BASE_URL);
   });
 };
