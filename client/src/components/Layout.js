@@ -7,7 +7,8 @@ function Layout(props) {
 
   async function getToken() {
     try {
-      let { data: token } = await axios.get("/api/token");
+      let res = await axios.get("/api/token");
+      let token = res?.data?.token || false;
       setToken(token);
     } catch (error) {
       setToken(false);

@@ -16,7 +16,7 @@ module.exports = (app) => {
       );
       res.send({ artists: info.data });
     } catch (error) {
-      res.redirect(process.env.BASE_URL);
+      res.redirect("/");
     }
   });
 
@@ -33,7 +33,7 @@ module.exports = (app) => {
       );
       res.send({ albums: info.data });
     } catch (error) {
-      res.redirect(process.env.BASE_URL);
+      res.redirect("/");
     }
   });
 
@@ -53,7 +53,7 @@ module.exports = (app) => {
         );
         res.send({ songs: info.data });
       } catch (error) {
-        res.redirect(process.env.BASE_URL);
+        res.redirect("/");
       }
     }
   );
