@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon",
     "server": "nodemon",
-    "client": "npm run start --prefix client"
+    "client": "npm run start --prefix client",
+    "prod-build": "npm install && npm install --prefix client && npm run build --prefix client"
   },
   "author": "",
   "license": "ISC",
